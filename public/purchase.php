@@ -3,40 +3,37 @@
 		require "../common.php";
 		try {
 			require_once '../src/PurchasesDBConnect.php';
-			$new_user = array(
-			"purchaseid" => $_POST['purchaseid'],
+			$new_purchase = array(
 			"movietitle" => $_POST['movietitle'],
 			"price" => $_POST['price']
 			);
 			$sql = sprintf(
 			"INSERT INTO %s (%s) values (%s)",
 			"purchases",
-			implode(", ", array_keys($new_user)),
-			":" . implode(", :", array_keys($new_user))
+			implode(", ", array_keys($new_purchase)),
+			":" . implode(", :", array_keys($new_purchase))
 			);
-			$statement = $connection->prepare($sql);
-			$statement->execute($new_user);
+			$statement = $connection -> prepare($sql);
+			$statement -> execute($new_purchase);
 			} catch(PDOException $error) {
-			echo $sql . "<br>" . $error->getMessage();
+			echo $sql . "<br>" . $error -> getMessage();
 		}
 	}
 ?>
 <?php require "templates/header.php"; ?>
 <?php if (isset($_POST['submit']) && $statement) { ?>
-	Thank you for purchasing: <?php echo escape($_POST['movietitle']); ?>
+	<?php echo "Thank you for your purchase."?>
 <?php } ?>
-<h2>Purchase</h2>
-<form method="post">
-	<label for="purchaseid">Purchase ID</label>
-	<input type="text" name="purchaseid" purchaseid="purchaseid">
-	<label for="movietitle">Movie Title</label>
-	<input type="text" name="movietitle" purchaseid="movietitle">
-	<label for="price">Price</label>
-	<input type="text" name="price" purchaseid="price">
+<h2>Purchase a Movie</h2>
+<form method = "post">
+	<label for = "movietitle">Movie Title</label>
+	<input type = "text" name = "movietitle" id = "movietitle">
+	<label for = "price">Price</label>
+	<input type = "text" name = "price" id = "price">
 	<br>
 	<br>
-	<input type="submit" name="submit" value="Buy Now">
+	<input type = "submit" name = "submit" value = "Buy Now">
 </form>
 <br>
-<a href="index.php">Back to home</a>
+<a href = "index.php">Back to Home</a>
 <?php include "templates/footer.php"; ?> 
