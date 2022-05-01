@@ -5,7 +5,7 @@
 		$options);
 		$sql = file_get_contents("data/initializeUser.sql");
 		$connection->exec($sql);
-		echo "Database and table 'users' created successfully.";
+		echo "Database and table 'users' generated and accessed successfully.";
 		} catch(PDOException $error) {
 		echo $sql . "<br>" . $error->getMessage();
 	}

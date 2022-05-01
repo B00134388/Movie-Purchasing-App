@@ -2,13 +2,13 @@
 	if (isset($_POST['submit'])) {
 		try {
 			require "../common.php";
-			require_once '../src/UserDBConnect.php';
+			require_once '../src/PurchasesDBConnect.php';
 			$sql = "SELECT *
-			FROM users
-			WHERE userid = :userid";
-			$userid = $_POST['userid'];
+			FROM purchases
+			WHERE purchaseid = :purchaseid";
+			$purchaseid = $_POST['purchaseid'];
 			$statement = $connection->prepare($sql);
-			$statement->bindParam(':userid', $userid, PDO::PARAM_STR);
+			$statement->bindParam(':purchaseid', $purchaseid, PDO::PARAM_STR);
 			$statement->execute();
 			$result = $statement->fetchAll();
 			} catch(PDOException $error) {
@@ -23,33 +23,29 @@
 		<table>
 			<thead>
 				<tr>
-					<th>#</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email Address</th>
-					<th>Age</th>
+					<th>Purchase ID</th>
+					<th>Movie Title</th>
+					<th>Price</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php foreach ($result as $row) { ?>
 					<tr>
-						<td><?php echo escape($row["userid"]); ?></td>
-						<td><?php echo escape($row["firstname"]); ?></td>
-						<td><?php echo escape($row["lastname"]); ?></td>
-						<td><?php echo escape($row["email"]); ?></td>
-						<td><?php echo escape($row["age"]); ?></td>
+						<td><?php echo escape($row["purchaseid"]); ?></td>
+						<td><?php echo escape($row["movietitle"]); ?></td>
+						<td><?php echo escape($row["price"]); ?></td>
 					</tr>
 				<?php } ?>
 			</tbody>
 		</table>
 		<?php } else { ?>
-		> No results found for <?php echo escape($_POST['userid']); ?>.
+		> No results found for <?php echo escape($_POST['purchaseid']); ?>.
 		<?php }
 	} ?>
-	<h2>User Search</h2>
+	<h2>Movie Search</h2>
 	<form method="post">
-		<label for="userid">Insert ID here:</label>
-		<input type="text" userid="userid" name="userid">
+		<label for="purchaseid">Insert Movie ID here:</label>
+		<input type="text" purchaseid="purchaseid" name="purchaseid">
 		<input type="submit" name="submit" value="Search">
 	</form>
 	<a href="index.php">Back to home</a>

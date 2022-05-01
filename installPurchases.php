@@ -5,7 +5,7 @@
 		$options);
 		$sql = file_get_contents("data/initializePurchases.sql");
 		$connection->exec($sql);
-		echo "Database and table 'purchases' created successfully.";
+		echo "Database and table 'purchases' generated and accessed successfully.";
 		} catch(PDOException $error) {
 		echo $sql . "<br>" . $error->getMessage();
 	}
