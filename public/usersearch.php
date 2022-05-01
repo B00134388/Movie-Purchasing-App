@@ -52,5 +52,4 @@
 		<input type = "text" id = "userid" name = "userid">
 		<input type = "submit" name = "submit" value = "Search">
 	</form>
-	<a href = "index.php">Back to Home</a>
 	<?php require "templates/footer.php"; ?>		

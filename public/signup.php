@@ -40,6 +40,4 @@
 	<br>
 	<input type = "submit" name = "submit" value = "Sign Up">
 </form>
-<br>
-<a href = "index.php">Back to Home</a>
 <?php include "templates/footer.php"; ?> 

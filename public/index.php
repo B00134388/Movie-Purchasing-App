@@ -13,4 +13,3 @@
 		<a href = "purchasehistory.php"><strong>Purchase History</strong></a> - View Previous Purchases
 	</li>
 </ul>
-<?php include "templates/footer.php"; ?>

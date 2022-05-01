@@ -48,5 +48,4 @@
 		<input type = "text" id = "purchaseid" name = "purchaseid">
 		<input type = "submit" name = "submit" value = "Search">
 	</form>
-	<a href = "index.php">Back to Home</a>
 	<?php require "templates/footer.php"; ?>		
